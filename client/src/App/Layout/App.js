@@ -9,6 +9,7 @@ import {
 import { Container } from 'react-bootstrap';
 import PokemonCard from '../../Features/PokemonList/PokemonCard';
 import Header from './header'
+import HomePage from '../../Features/Home/Home';
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       <Header/>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<PokemonCard/>} />
+          <Route path="/home" element={<HomePage/>} />
+          <Route path="/test" element={<PokemonCard/>} />
   
         </Routes>
       </BrowserRouter>
