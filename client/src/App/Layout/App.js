@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 //import './App.css';
-import { Container } from 'react-bootstrap';
+
 import PokemonCard from '../../Features/PokemonList/PokemonCard/PokemonCard'
 import Header from './header'
 import HomePage from '../../Features/Home/Home';

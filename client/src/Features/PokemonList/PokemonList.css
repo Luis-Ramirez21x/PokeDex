@@ -1,8 +1,8 @@
 .card{
     background-color:aqua !important;
-    width: 200px;
+    width: 180px;
     height: 100px;
-    
+    margin-top:12px;
     border-radius: 20px !important;
     flex-direction: row !important;
 }
