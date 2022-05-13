@@ -7,9 +7,10 @@ import {
 } from "react-router-dom";
 //import './App.css';
 import { Container } from 'react-bootstrap';
-import PokemonCard from '../../Features/PokemonList/PokemonCard';
+import PokemonCard from '../../Features/PokemonList/PokemonCard/PokemonCard'
 import Header from './header'
 import HomePage from '../../Features/Home/Home';
+import PokemonList from '../../Features/PokemonList/PokemonList';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<HomePage/>} />
           <Route path="/test" element={<PokemonCard/>} />
+          <Route path="/pokemonList" element={<PokemonList/>} />
   
         </Routes>
       </BrowserRouter>
