@@ -1,5 +1,9 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import BasicCard from "./BasicCard/BasicCard";
+import './PokemonList.css'
+
 
 
 
@@ -18,9 +22,22 @@ function PokemonList(){
     
     console.log(pokelist);
     return(
-        <>
-            <h2>test</h2>
-        </>
+        <Container>
+            <Row xs={2} md={2}>
+                <Col>
+                    <BasicCard/>
+                </Col>
+                <Col>
+                    <BasicCard/>
+                </Col>
+                <Col>
+                    <BasicCard/>
+                </Col>
+                
+            </Row>
+        </Container>
+            
+        
     )
 }
 

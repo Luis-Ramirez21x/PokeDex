@@ -1,0 +1,25 @@
+.card{
+    background-color:aqua !important;
+    width: 200px;
+    height: 100px;
+    
+    border-radius: 20px !important;
+    flex-direction: row !important;
+}
+
+.card-img-top{
+    width:100px !important;
+    height: 100px;
+}
+
+.pokeName{
+    font-size: 10px !important;
+    color: white
+}
+
+.badge{
+    font-weight: 200 !important;
+    font-size:10px !important;
+    margin: 1px;
+    
+}
