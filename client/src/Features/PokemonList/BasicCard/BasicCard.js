@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Card, Badge } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Link } from "react";
 
 function BasicCard({name, url}){
 
@@ -20,7 +20,8 @@ function BasicCard({name, url}){
     }
     console.log(pokemon)
     return(
-        <Card className='basicCard'>
+        <Card className='basicCard' as="a" href={`/pokemon/${pokemon.id}`} style={{ cursor: "pointer" }}>
+   
             <Card.Img variant="top" src={pokemon.sprites.other.dream_world.front_default} />
             <Card.Body>
             <Card.Title className='pokeName'>{name.charAt(0).toUpperCase(0) + name.slice(1)}</Card.Title>
@@ -28,7 +29,7 @@ function BasicCard({name, url}){
 
                 {pokemon.types.map((type) => {
                     return(
-                        <Badge pill bg="dark">
+                        <Badge pill bg="dark" key={type.type.name}>
                         {type.type.name}
                       </Badge>
                     )
@@ -37,6 +38,7 @@ function BasicCard({name, url}){
                 
             </Card.Text>
             </Card.Body>
+            
         </Card>
     )
 }
