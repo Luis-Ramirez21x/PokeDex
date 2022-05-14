@@ -4,11 +4,12 @@ import { Card, Button, Nav } from 'react-bootstrap';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CardHeader from './CardHeader/CardHeader'
-import CardDetails from './CardDetails';
+import CardDetails from './CardDetails/CardDetails'
 
 function PokemonCard (){
     const [pokemon, setPokemon] = useState();
     const [loading, setLoading] = useState(true);
+    
     let {id} = useParams();
 
     useEffect(() => {
@@ -18,6 +19,10 @@ function PokemonCard (){
       .finally(() => setLoading(false))
     }, [])
 
+
+
+
+    
     console.log(pokemon)
     
       return(
