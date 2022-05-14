@@ -1,14 +1,18 @@
 import axios from 'axios';
 import { useEffect } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Nav } from 'react-bootstrap';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import CardHeader from './CardHeader/CardHeader'
+import CardDetails from './CardDetails';
 
 function PokemonCard (){
     const [pokemon, setPokemon] = useState();
     const [loading, setLoading] = useState(true);
+    let {id} = useParams();
 
     useEffect(() => {
-      axios.get("https://pokeapi.co/api/v2/pokemon/pikachu/")
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then( res => setPokemon(res.data))
       .catch(error => console.log(error))
       .finally(() => setLoading(false))
@@ -19,17 +23,13 @@ function PokemonCard (){
       return(
         <>
         {loading ? (<h2>loading...</h2>) : (
-            <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  {pokemon.name}
-                  {pokemon.types[0].type.name}
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-            </Card> 
+            <>
+            <CardHeader imgUrl = {pokemon.sprites.other.dream_world.front_default}
+            name={pokemon.name} 
+            types={pokemon.types}
+            />
+            <CardDetails />
+            </>
         )}
         </>
       )
