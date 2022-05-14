@@ -33,7 +33,7 @@ function PokemonCard (){
             name={pokemon.name} 
             types={pokemon.types}
             />
-            <CardDetails />
+            <CardDetails pokemon={pokemon} />
             </>
         )}
         </>

@@ -3,7 +3,7 @@ import './CardHeader.css';
 
 
 function CardHeader({imgUrl, name, types}){
-    console.log(types)
+    
 
     return(
         <Container>
