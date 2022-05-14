@@ -20,8 +20,8 @@ function TabNav({currentTab, setCurrentTab}){
             onClick={() => setCurrentTab('Evolution')}>Evolution</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-            <Nav.Link className={currentTab === 'Moves' ? 'nav-link active' : 'nav-link'}
-            onClick={() => setCurrentTab('Moves')}>Moves</Nav.Link>
+            <Nav.Link className={currentTab === 'Abilities' ? 'nav-link active' : 'nav-link'}
+            onClick={() => setCurrentTab('Abilities')}>Abilities</Nav.Link>
             </Nav.Item>
         </Nav>
     )

@@ -4,7 +4,7 @@ import { useState } from "react";
 import About from './Stats/About';
 import BaseStats from './Stats/BaseStats';
 import Evolution from './Stats/Evolution';
-import Moves from './Stats/Moves';
+import Abilities from './Stats/Abilities';
 
 
 function CardDetails({pokemon}){
@@ -21,7 +21,7 @@ function CardDetails({pokemon}){
         if (currentTab === 'Evolution') {
           return <Evolution />;
         }
-        return <Moves />;
+        return <Abilities />;
       };
 
     return(

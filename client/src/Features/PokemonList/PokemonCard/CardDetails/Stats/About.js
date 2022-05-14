@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 
 
-function About({pokemon, abilities, speciesUrl}){
+function About({pokemon, speciesUrl}){
     const [speciesData, setSpeciesData] = useState();
     const [loading, setLoading] = useState(true);
     let species= '';
@@ -22,7 +22,7 @@ function About({pokemon, abilities, speciesUrl}){
         )    
     }
 
-    
+    console.log(speciesData)
     return (
 
         <>
@@ -44,12 +44,7 @@ function About({pokemon, abilities, speciesUrl}){
                     <td>Weigth:</td>
                     <td>{pokemon.weight}</td>
                 </tr>
-                <tr>
-                    <td>Abilities</td>
-                    <td> {abilities.map((ability) => {
-                        return ability.ability.name + " ";
-                    })} </td>
-                </tr>
+ 
             </tbody>
         </Table>
         <h3>Breeding</h3>
