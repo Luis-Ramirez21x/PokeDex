@@ -22,7 +22,7 @@ function About({pokemon, abilities, speciesUrl}){
         )    
     }
 
-    console.log(speciesData)
+    
     return (
 
         <>

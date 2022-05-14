@@ -9,14 +9,14 @@ import Moves from './Stats/Moves';
 
 function CardDetails({pokemon}){
 
-    const [currentTab, setCurrentTab] = useState('About');
+    const [currentTab, setCurrentTab] = useState('BaseStats');
 
     const renderTab = () => {
         if (currentTab === 'About') {
           return <About pokemon={pokemon} abilities={pokemon.abilities} speciesUrl={pokemon.species.url}/>;
         }
         if (currentTab === 'BaseStats') {
-          return <BaseStats />;
+          return <BaseStats stats={pokemon.stats}/>;
         }
         if (currentTab === 'Evolution') {
           return <Evolution />;
