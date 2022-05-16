@@ -13,15 +13,15 @@ function CardDetails({pokemon}){
 
     const renderTab = () => {
         if (currentTab === 'About') {
-          return <About pokemon={pokemon} abilities={pokemon.abilities} speciesUrl={pokemon.species.url}/>;
+          return <About pokemon={pokemon}  speciesUrl={pokemon.species.url}/>;
         }
-        if (currentTab === 'BaseStats') {
+        if (currentTab === 'Base Stats') {
           return <BaseStats stats={pokemon.stats}/>;
         }
         if (currentTab === 'Evolution') {
           return <Evolution />;
         }
-        return <Abilities />;
+        return <Abilities abilities={pokemon.abilities}/>;
       };
 
     return(

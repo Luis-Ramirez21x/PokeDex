@@ -9,7 +9,7 @@ function Header (){
       <Row>
         <Nav className="justify-content-center" defaultActiveKey="/home" as="ul">
           <Nav.Item as="li">
-            <Nav.Link href="/home">Pokedex</Nav.Link>
+            <Nav.Link href="/pokemonList">Pokedex</Nav.Link>
           </Nav.Item>
           <Nav.Item as="li">
             <Nav.Link eventKey="link-1">Sign Up/Login</Nav.Link>
