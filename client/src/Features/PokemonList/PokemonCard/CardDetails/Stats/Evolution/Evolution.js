@@ -9,16 +9,6 @@ function Evolution({speciesUrl}){
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        /* 
-        axios.get(speciesUrl)
-            .then(res => setUrl(res.data.evolution_chain.url))
-            .catch(error => console.log(error))
-
-        axios.get(evolutionUrl)
-            .then(res => setEvolutionChain(res.data))
-            .catch(error => console.log(error))
-            .finally(() => setLoading(false))
-        */
 
         const getData = async () =>{
 

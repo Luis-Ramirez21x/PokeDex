@@ -3,7 +3,7 @@ import { Card, Badge } from "react-bootstrap";
 import { useEffect, useState, Link } from "react";
 
 function BasicCard({name, url}){
-
+    console.log(url)
     const [pokemon, setPokemon] = useState();
     const [loading, setLoading] = useState(true);
 
