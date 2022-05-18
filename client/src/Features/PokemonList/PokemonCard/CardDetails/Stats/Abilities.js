@@ -31,7 +31,7 @@ function Abilities({abilities}){
         },[])
 
 
-        console.log(abilityData)
+        
 
         if(loading){
             return(

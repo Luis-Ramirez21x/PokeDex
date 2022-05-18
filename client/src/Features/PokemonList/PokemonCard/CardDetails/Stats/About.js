@@ -6,7 +6,7 @@ import { Table } from "react-bootstrap";
 function About({pokemon, speciesUrl}){
     const [speciesData, setSpeciesData] = useState();
     const [loading, setLoading] = useState(true);
-    let species= '';
+    
     
 
     useEffect(() => {
@@ -22,7 +22,7 @@ function About({pokemon, speciesUrl}){
         )    
     }
 
-    console.log(speciesData)
+    
     return (
 
         <>

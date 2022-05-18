@@ -3,7 +3,7 @@ import TabNav from './TabNav'
 import { useState } from "react";
 import About from './Stats/About';
 import BaseStats from './Stats/BaseStats';
-import Evolution from './Stats/Evolution';
+import Evolution from './Stats/Evolution/Evolution';
 import Abilities from './Stats/Abilities';
 
 
@@ -19,9 +19,9 @@ function CardDetails({pokemon}){
           return <BaseStats stats={pokemon.stats}/>;
         }
         if (currentTab === 'Evolution') {
-          return <Evolution />;
+          return <Evolution speciesUrl={pokemon.species.url}/>;
         }
-        return <Abilities abilities={pokemon.abilities}/>;
+        return <Abilities abilities={pokemon.abilities}  />;
       };
 
     return(

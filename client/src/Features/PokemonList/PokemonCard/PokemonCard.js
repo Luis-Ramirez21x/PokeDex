@@ -23,7 +23,7 @@ function PokemonCard (){
 
 
     
-    console.log(pokemon)
+    
     
       return(
         <>
