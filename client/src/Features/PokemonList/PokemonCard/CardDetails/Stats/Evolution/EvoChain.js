@@ -1,16 +1,102 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 
 
 function EvoChain({evoChain}) {
     const [loading, setLoading] = useState(true);
 
+    let [evo1, setEvo1] = useState({name: null, imageUrl: null})
+    let [evo2, setEvo2] = useState({name: null, imageUrl: null})  
+    let [evo3, setEvo3] = useState({name: null, imageUrl: null})      
+
+    useEffect(() =>{
+        setEvo1( 
+            {name: evoChain.species.name}
+        )
+        if(evoChain.evolves_to[0].length !=0 ){
+            setEvo2(
+                {name:evoChain.evolves_to[0].species.name}
+                )
+        }
+        if(evoChain.evolves_to[0].evolves_to.length != 0){
+            setEvo3(
+                {name:evoChain.evolves_to[0].evolves_to[0].species.name}
+            )
+        }
+
+        const getEvoImages = async () => {
+            let url = 'https://pokeapi.co/api/v2/pokemon/'
+            console.log(evo1.name)
+            let poke1Data = await axios.get(url + evo1.name);
+            setEvo1(
+                {imageUrl: poke1Data.data.sprites.front_default}
+            )
+        }
+
+        getEvoImages();
+
+    }, [])
+
+    
     
 
+   
+    //console.log(evoChain)
+    
+    //getEvoImages();
+    
+    
+
+
+    if(loading){
+        return(<h3>loading</h3>)
+    }
+
+       console.log(evo3)
+
+    return(
+        <>
+            <Card>
+                <Card.Img variant="top" src={evo1.imageUrl} />
+                <Card.Body>
+                <Card.Title>{evo2.name}</Card.Title>
+                </Card.Body>
+            </Card>
+            <Card>
+                <Card.Img variant="top" src={evo2.imageUrl} />
+                <Card.Body>
+                <Card.Title>{evo2.name}</Card.Title>
+                </Card.Body>
+            </Card>
+            <Card>
+                <Card.Img variant="top" src={evo3.imageUrl} />
+                <Card.Body>
+                <Card.Title>{evo3.name}</Card.Title>
+                </Card.Body>
+            </Card>
+        
+        </>
+    )
+}
+
+export default EvoChain;
+
+
+
+
+
+
+
+
+
+
+
+    /*
     let evo1 = {name: null, imageUrl: null};
     let evo2 = {name: null, imageUrl: null};
     let evo3 = {name: null, imageUrl: null};
+    
     function getEvolutions(){
 
         evo1.name = evoChain.species.name;
@@ -44,42 +130,4 @@ function EvoChain({evoChain}) {
         setLoading(false);
     }
 
-
-   
-    //console.log(evoChain)
-    getEvolutions();
-    getEvoImages();
-
-
-    if(loading){
-        return(<h3>loading</h3>)
-    }
-
-       
-
-    return(
-        <>
-            <Card>
-                <Card.Img variant="top" src={evo1.imageUrl} />
-                <Card.Body>
-                <Card.Title>{evo1.imageUrl}</Card.Title>
-                </Card.Body>
-            </Card>
-            <Card>
-                <Card.Img variant="top" src={evo2.imageUrl} />
-                <Card.Body>
-                <Card.Title>{evo2.name}</Card.Title>
-                </Card.Body>
-            </Card>
-            <Card>
-                <Card.Img variant="top" src={evo3.imageUrl} />
-                <Card.Body>
-                <Card.Title>{evo3.name}</Card.Title>
-                </Card.Body>
-            </Card>
-        
-        </>
-    )
-}
-
-export default EvoChain;
+    */
