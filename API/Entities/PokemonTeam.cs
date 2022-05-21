@@ -7,6 +7,8 @@ namespace API.Entities
 {
     public class PokemonTeam
     {
-        
+        public int Id { get; set; }
+
+       public List<Pokemon> Members { get; set; } = new();
     }
 }
