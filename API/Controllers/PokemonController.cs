@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-    public class PokemonTeamController : BaseApiController
+    public class PokemonController : BaseApiController
     {
-        public PokemonTeamController()
+        public PokemonController()
         {
         }
     }

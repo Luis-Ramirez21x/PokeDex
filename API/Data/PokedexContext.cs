@@ -13,6 +13,6 @@ namespace API.Data
         {
         }
 
-        public DbSet<PokemonTeam> Teams { get; set; }
+        public DbSet<Pokemon> Pokemon { get; set; }
     }
 }
