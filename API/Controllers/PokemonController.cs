@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,6 +35,18 @@ namespace API.Controllers
             if(pokemon == null ) return NotFound();
 
             return pokemon;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Pokemon>>
+        AddPokemon( Pokemon newPokemon )
+        {
+            
+
+            _context.Pokemon.Add(newPokemon);
+            await _context.SaveChangesAsync();
+
+            return newPokemon;
         }
 
     }

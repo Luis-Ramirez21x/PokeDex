@@ -32,6 +32,7 @@ function PokemonCard (){
             <CardHeader imgUrl = {pokemon.sprites.other.dream_world.front_default}
             name={pokemon.name} 
             types={pokemon.types}
+            id= {id}
             />
             <CardDetails pokemon={pokemon} />
             </>

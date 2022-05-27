@@ -2,9 +2,11 @@ import { Card, Col, Container, Row, Badge } from "react-bootstrap";
 import './CardHeader.css';
 import { FaStar } from "react-icons/fa";
 import { useState } from "react";
+import axios from "axios";
 
 
-function CardHeader({imgUrl, name, types}){
+
+function CardHeader({imgUrl, name, types, id}){
 
     //star pokemon state 
     const [stared, starPokemon] = useState(true);
@@ -12,6 +14,15 @@ function CardHeader({imgUrl, name, types}){
 
     function savePokemon(){
         starPokemon(!stared);
+        //post with name, imageUrl, Url
+        //`/pokemon/${pokemon.id}`
+
+        let newPokemon = { name : name, url : `/pokemon/${id}`, imageUrl : imgUrl}
+        axios.post(`https://localhost:7208/api/Pokemon`, newPokemon)
+            .then(res => console.log(res))
+            .catch(error => console.log(error))
+            
+        
     }
     
 
