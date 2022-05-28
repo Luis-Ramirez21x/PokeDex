@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using API.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace API.Data
 {
@@ -9,7 +10,7 @@ namespace API.Data
         //create list of products
         //add to db
         //save to db
-        public static void Initialize(PokedexContext context)
+        public static void Initialize(PokedexContext context, UserManager<User> userManager)
         {
             //if Products table contains anything return
             if (context.Pokemon.Any()) return;

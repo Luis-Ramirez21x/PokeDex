@@ -14,8 +14,6 @@ function CardHeader({imgUrl, name, types, id}){
 
     function savePokemon(){
         starPokemon(!stared);
-        //post with name, imageUrl, Url
-        //`/pokemon/${pokemon.id}`
 
         let newPokemon = { name : name, url : `/pokemon/${id}`, imageUrl : imgUrl}
         axios.post(`https://localhost:7208/api/Pokemon`, newPokemon)
