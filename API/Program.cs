@@ -27,7 +27,7 @@ namespace API
             try
             {
                 await context.Database.MigrateAsync();
-                DbInitializer.Initialize(context,userManager);
+                await DbInitializer.Initialize(context,userManager);
             }
             catch(Exception ex)
             {
