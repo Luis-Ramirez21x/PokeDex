@@ -12,11 +12,11 @@ function Header (){
             <Nav.Link href="/pokemonList">Pokedex</Nav.Link>
           </Nav.Item>
           <Nav.Item as="li">
-            <Nav.Link eventKey="link-1">Sign Up/Login</Nav.Link>
+            <Nav.Link href="/login">Sign Up/Login</Nav.Link>
           </Nav.Item>
-          <Nav.item>
+          <Nav.Item as="li">
               <Nav.Link href='/stared-pokemon'>My pokemon</Nav.Link>
-          </Nav.item>
+          </Nav.Item>
         </Nav>
       </Row>
       </>
