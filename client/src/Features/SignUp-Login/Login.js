@@ -1,8 +1,9 @@
 import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
+import axios from "axios";
 
 function Login(){
-    const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+    const [userFormData, setUserFormData] = useState({ username: '', password: '' });
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -13,6 +14,15 @@ function Login(){
         event.preventDefault();
 
         try{
+
+            console.log(userFormData.username, userFormData.password)
+            let data = await axios.post('https://localhost:7208/api/Account/login',
+            {
+                "username": userFormData.username,
+                "password": userFormData.password
+            })
+
+                console.log(data);
             
         } catch(error){
             console.log(error)
@@ -23,19 +33,19 @@ function Login(){
     return(
         <>
         <h2>login</h2>
-        <Form>
+        <Form onSubmit={handleFormSubmit}>
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor='email'>Email address</Form.Label>
+                <Form.Label htmlFor='username'>Username</Form.Label>
                 <Form.Control 
-                type="email" 
-                placeholder="Enter email"
-                name='email'
+                type="username" 
+                placeholder="Enter username"
+                name='username'
                 onChange={handleInputChange}
-                value={userFormData.email}
+                value={userFormData.username}
                 required
                 />
                 <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
+                    Nothing yet...
                 </Form.Text>
             </Form.Group>
 
@@ -56,7 +66,7 @@ function Login(){
             <Button 
             variant="success" 
             type="submit"
-            disabled={!(userFormData.email && userFormData.password)}
+            disabled={!(userFormData.username && userFormData.password)}
             >
                 Submit
             </Button>

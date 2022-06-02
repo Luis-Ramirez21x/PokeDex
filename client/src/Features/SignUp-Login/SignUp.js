@@ -16,7 +16,7 @@ function SignUp() {
         event.preventDefault();
 
         try{
-            let test = await axios.post('https://localhost:7208/api/Account/register',
+            let login = await axios.post('https://localhost:7208/api/Account/register',
             {
                 
                 "email": userFormData.email,
@@ -24,7 +24,7 @@ function SignUp() {
                 "password": userFormData.password
         
             })
-            console.log(test);
+            
         } catch(error){
             console.log(error)
         }
@@ -81,6 +81,7 @@ function SignUp() {
             <Button 
             variant="success" 
             type="submit"
+            
             disabled={!(userFormData.email && userFormData.password)}
             >
                 Submit
