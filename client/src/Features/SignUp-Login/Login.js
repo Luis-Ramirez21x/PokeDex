@@ -71,7 +71,12 @@ function Login(){
             >
                 Submit
             </Button>
-        </Form></>
+        </Form>
+        
+        <h3>Don't have An account? Sign up <a href='/signup'>here!</a></h3>
+        </>
+
+       
     )
 }
 
