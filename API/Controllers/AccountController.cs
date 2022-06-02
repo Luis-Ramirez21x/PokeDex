@@ -9,6 +9,7 @@ using API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -23,6 +24,14 @@ namespace API.Controllers
             _tokenService = tokenService;
             _userManager = userManager;
         }
+        [HttpGet("users")]
+        
+         public async Task<List<User>> 
+         GetAllUsers()
+         {
+             return await _userManager.Users.ToListAsync();
+         }
+        
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDTO>> Login(LoginDTO loginDto)

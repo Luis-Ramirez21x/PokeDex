@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 //import './App.css';
 import Login from '../../Features/SignUp-Login/Login';
+import SignUp from '../../Features/SignUp-Login/SignUp';
 
 import PokemonCard from '../../Features/PokemonList/PokemonCard/PokemonCard'
 import Header from './header'
@@ -22,7 +23,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage/>} />
-          <Route path='/login' element={<Login/>} />
+          <Route path='/login' element={<SignUp/>} />
           <Route path="/test" element={<PokemonCard/>} />
           <Route path="/pokemonList" element={<PokemonList/>} />
           <Route path="/pokemon/:id" element={<PokemonCard/>} />
