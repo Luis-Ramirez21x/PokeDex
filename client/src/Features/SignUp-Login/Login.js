@@ -1,6 +1,7 @@
 import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
+import Auth from '../../App/Util/auth'
 
 function Login(){
     const [userFormData, setUserFormData] = useState({ username: '', password: '' });
@@ -16,13 +17,13 @@ function Login(){
         try{
 
             console.log(userFormData.username, userFormData.password)
-            let data = await axios.post('https://localhost:7208/api/Account/login',
+            let {data}= await axios.post('https://localhost:7208/api/Account/login',
             {
                 "username": userFormData.username,
                 "password": userFormData.password
             })
 
-                console.log(data);
+            Auth.login(data.token);
             
         } catch(error){
             console.log(error)
