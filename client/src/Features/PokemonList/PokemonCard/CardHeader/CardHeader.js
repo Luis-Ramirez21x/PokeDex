@@ -9,17 +9,18 @@ import axios from "axios";
 function CardHeader({imgUrl, name, types, id}){
 
     //star pokemon state 
-    const [stared, starPokemon] = useState(true);
+    const [stared, starPokemon] = useState(false);
     //const stars = Array(1).fill(0)
 
     function savePokemon(){
         starPokemon(!stared);
 
+        if(stared){
         let newPokemon = { name : name, url : `/pokemon/${id}`, imageUrl : imgUrl}
         axios.post(`https://localhost:7208/api/Pokemon`, newPokemon)
             .then(res => console.log(res))
             .catch(error => console.log(error))
-            
+        }   
         
     }
     

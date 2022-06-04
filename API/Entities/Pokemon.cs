@@ -15,6 +15,7 @@ namespace API.Entities
 
         public string ImageUrl { get; set; }
 
-
+        public int TeamId { get; set; }
+        public PokemonTeam Team { get; set; }
     }
 }

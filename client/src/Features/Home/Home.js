@@ -4,11 +4,7 @@ import Auth from '../../App/Util/auth'
 
 
 function HomePage () {
-    const token = Auth.loggedIn()
 
-    if(token){
-        console.log('mf is logged in')
-    }
 
     return(
         <>

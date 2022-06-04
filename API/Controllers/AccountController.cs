@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using API.Data;
+using API.Data.Migrations;
 using API.DTOs;
 using API.Entities;
 using API.Services;
@@ -96,6 +99,19 @@ namespace API.Controllers
                 Token = await _tokenService.GenerateToken(user),
                // Basket = userBasket?.MapBasketToDto()
             };
+        }
+
+       // [Authorize]
+        [HttpPost("starredPokemon")]
+        public async Task<ActionResult<User>> StarPokemon(int pokemonNum)
+        {
+            //find current user 
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            //add it to user StarredPokemonId
+             user.StarredPokemonIds.Add(new PokemonIds(pokemonNum));
+
+            return user;
         }
 
         //use this as model for retrieving a Team, or possible starred pokemon
