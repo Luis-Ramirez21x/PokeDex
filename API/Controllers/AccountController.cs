@@ -84,8 +84,22 @@ namespace API.Controllers
 
             return StatusCode(201);
         }
-
         [Authorize]
+        [HttpPost("starredPokemon")]
+        public async Task<ActionResult<IdentityResult>> 
+        StarPokemon(Pokemon newPokemon)
+        {
+            //find current user 
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            //add it to user StarredPokemonId
+              user.StarredPokemonIds.Add(newPokemon);
+
+            var result = await _userManager.UpdateAsync(user);
+            return result;
+        }
+
+        
         [HttpGet("currentUser")]
         public async Task<ActionResult<UserDTO>> GetCurrentUser()
         {
@@ -101,7 +115,7 @@ namespace API.Controllers
             };
         }
 
-       // [Authorize]
+       /* [Authorize]
         [HttpPost("starredPokemon")]
         public async Task<ActionResult<User>> StarPokemon(int pokemonNum)
         {
@@ -115,7 +129,7 @@ namespace API.Controllers
         }
 
         //use this as model for retrieving a Team, or possible starred pokemon
-/*
+
         private async Task<Basket> RetrieveBasket(string buyerId)
         {
             if (string.IsNullOrEmpty(buyerId))

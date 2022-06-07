@@ -44,6 +44,7 @@ namespace API.Data
                     Name= "Fake Pokemon",
                     Url = "Fake URL",
                     ImageUrl = "Fake image URL",
+                    UserNum = 1,
 
                 },
                         new Pokemon
@@ -51,6 +52,7 @@ namespace API.Data
                     Name = "Pokemon 1",
                     Url = "Fake Url Again",
                     ImageUrl = "another one Fake Url",
+                    UserNum = 12,
                 }
             };
             //loops through our list of Product 

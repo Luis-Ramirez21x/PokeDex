@@ -5,7 +5,7 @@ namespace API.Entities
 {
     public class User : IdentityUser
     {
-        public List<PokemonIds> StarredPokemonIds { get; set; } 
+        public List<Pokemon> StarredPokemonIds { get; set; } = new();
 
         
     }

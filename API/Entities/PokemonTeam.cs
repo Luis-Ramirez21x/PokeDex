@@ -9,6 +9,6 @@ namespace API.Entities
     {
         public int Id { get; set; }
 
-       public List<Pokemon> Members { get; set; } = new();
+       //public List<Pokemon> Members { get; set; } = new();
     }
 }
