@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(PokedexContext))]
-    [Migration("20220604020514_StarredPokemonids")]
-    partial class StarredPokemonids
+    [Migration("20220608220114_AddedUser")]
+    partial class AddedUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,27 +31,8 @@ namespace API.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TeamId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Url")
                         .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("Pokemon");
-                });
-
-            modelBuilder.Entity("API.Entities.PokemonIds", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("PokemonId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("UserId")
                         .HasColumnType("TEXT");
@@ -60,18 +41,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PokemonIds");
-                });
-
-            modelBuilder.Entity("API.Entities.PokemonTeam", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PokemonTeam");
+                    b.ToTable("Pokemon");
                 });
 
             modelBuilder.Entity("API.Entities.User", b =>
@@ -166,15 +136,15 @@ namespace API.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "68c285df-f634-460d-8c35-7ba76aa614e9",
-                            ConcurrencyStamp = "758388cc-3969-4e47-9215-141e60c3a62f",
+                            Id = "84005817-32a6-496c-8cf1-a42733cc8117",
+                            ConcurrencyStamp = "8d49d4ed-e09b-4215-8164-bf75930acf3b",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "f1f02f09-db85-4252-8ad1-798f0e435bd2",
-                            ConcurrencyStamp = "2e322114-33a9-4cbb-b301-5f07a7befb24",
+                            Id = "c7edd606-73b5-4e1d-8f2f-679182e5d3cb",
+                            ConcurrencyStamp = "06274745-2be9-4173-ab7d-b014513a058f",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -284,20 +254,11 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.Pokemon", b =>
                 {
-                    b.HasOne("API.Entities.PokemonTeam", "Team")
-                        .WithMany("Members")
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Team");
-                });
-
-            modelBuilder.Entity("API.Entities.PokemonIds", b =>
-                {
-                    b.HasOne("API.Entities.User", null)
+                    b.HasOne("API.Entities.User", "User")
                         .WithMany("StarredPokemonIds")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -349,11 +310,6 @@ namespace API.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("API.Entities.PokemonTeam", b =>
-                {
-                    b.Navigation("Members");
                 });
 
             modelBuilder.Entity("API.Entities.User", b =>

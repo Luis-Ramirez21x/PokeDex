@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(PokedexContext))]
-    [Migration("20220528012400_IdentityAdded")]
-    partial class IdentityAdded
+    [Migration("20220615035157_ImLosingIt")]
+    partial class ImLosingIt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,25 @@ namespace API.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pokemon");
+                });
+
+            modelBuilder.Entity("API.Entities.StarredPokemon", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("StarredPokemon");
                 });
 
             modelBuilder.Entity("API.Entities.User", b =>
@@ -131,15 +150,15 @@ namespace API.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "976049d9-defe-4537-bd23-59e473c6ec75",
-                            ConcurrencyStamp = "2d5aecdf-6241-4ab2-adb0-6cb3c0511503",
+                            Id = "887299da-d6e1-4a5c-94af-ac6b1254adee",
+                            ConcurrencyStamp = "ddcd4c39-e3d5-4192-abd5-db956cd977fe",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "a9dc0c83-9414-4491-b6c0-a5049d150b2a",
-                            ConcurrencyStamp = "360dc779-0468-440c-9ad0-7c853275457c",
+                            Id = "945068bb-d7dc-47fd-b6da-6ddb7be0f09c",
+                            ConcurrencyStamp = "e3015118-3b4f-4584-bff6-67fb7aaa74df",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -247,6 +266,15 @@ namespace API.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("API.Entities.StarredPokemon", b =>
+                {
+                    b.HasOne("API.Entities.User", "User")
+                        .WithMany("StarredPokemons")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -296,6 +324,11 @@ namespace API.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("API.Entities.User", b =>
+                {
+                    b.Navigation("StarredPokemons");
                 });
 #pragma warning restore 612, 618
         }

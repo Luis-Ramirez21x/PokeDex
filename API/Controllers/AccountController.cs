@@ -1,11 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using API.Data;
-using API.Data.Migrations;
 using API.DTOs;
 using API.Entities;
 using API.Services;
@@ -86,17 +82,25 @@ namespace API.Controllers
         }
         [Authorize]
         [HttpPost("starredPokemon")]
-        public async Task<ActionResult<IdentityResult>> 
-        StarPokemon(Pokemon newPokemon)
+        public async Task<ActionResult<List<string>>>
+        StarPokemon(PokemonDTO newPoke)
         {
             //find current user 
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            //add it to user StarredPokemonId
-              user.StarredPokemonIds.Add(newPokemon);
+            _context.Pokemon.Add(new Pokemon{Name = newPoke.Name, User = user});
+            await _context.SaveChangesAsync();
 
-            var result = await _userManager.UpdateAsync(user);
-            return result;
+            var list = new List<string>();
+            foreach( var poke in _context.Pokemon)
+            {
+                if(poke?.User?.Id == user.Id)
+                {
+                    list.Add(poke.Name);
+                }
+            }
+            
+            return list;
         }
 
         

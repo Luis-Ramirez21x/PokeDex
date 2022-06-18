@@ -4,38 +4,22 @@
 
 namespace API.Data.Migrations
 {
-    public partial class RevisingModels : Migration
+    public partial class Simplifying : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Pokemon_PokemonTeam_TeamId",
-                table: "Pokemon");
-
             migrationBuilder.DropTable(
-                name: "PokemonIds");
-
-            migrationBuilder.DropTable(
-                name: "PokemonTeam");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Pokemon_TeamId",
-                table: "Pokemon");
+                name: "StarredPokemon");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "68c285df-f634-460d-8c35-7ba76aa614e9");
+                keyValue: "887299da-d6e1-4a5c-94af-ac6b1254adee");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "f1f02f09-db85-4252-8ad1-798f0e435bd2");
-
-            migrationBuilder.RenameColumn(
-                name: "TeamId",
-                table: "Pokemon",
-                newName: "UserNum");
+                keyValue: "945068bb-d7dc-47fd-b6da-6ddb7be0f09c");
 
             migrationBuilder.AddColumn<string>(
                 name: "UserId",
@@ -46,12 +30,12 @@ namespace API.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "05f5214b-a006-410e-9490-0796ca93b8b7", "bd96906e-7962-4ec9-ad49-d7dfdd44ebec", "Member", "MEMBER" });
+                values: new object[] { "28aa35ce-5620-44bb-81e2-3cd9db6fdd72", "fcbfd31c-5013-47b2-b74f-533999b2f56d", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "31c81387-532d-4731-b174-b4b5741799ae", "06344aef-c0a2-4c86-bc89-019bde60980c", "Admin", "ADMIN" });
+                values: new object[] { "ec441a7f-3112-4c03-802b-5f22f8ac1e34", "6088a67e-4e94-4745-8252-e65462e74365", "Member", "MEMBER" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pokemon_UserId",
@@ -79,80 +63,50 @@ namespace API.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "05f5214b-a006-410e-9490-0796ca93b8b7");
+                keyValue: "28aa35ce-5620-44bb-81e2-3cd9db6fdd72");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "31c81387-532d-4731-b174-b4b5741799ae");
+                keyValue: "ec441a7f-3112-4c03-802b-5f22f8ac1e34");
 
             migrationBuilder.DropColumn(
                 name: "UserId",
                 table: "Pokemon");
 
-            migrationBuilder.RenameColumn(
-                name: "UserNum",
-                table: "Pokemon",
-                newName: "TeamId");
-
             migrationBuilder.CreateTable(
-                name: "PokemonIds",
+                name: "StarredPokemon",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    PokemonId = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<string>(type: "TEXT", nullable: true)
+                    UserId = table.Column<string>(type: "TEXT", nullable: true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PokemonIds", x => x.Id);
+                    table.PrimaryKey("PK_StarredPokemon", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PokemonIds_AspNetUsers_UserId",
+                        name: "FK_StarredPokemon_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "PokemonTeam",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PokemonTeam", x => x.Id);
-                });
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "887299da-d6e1-4a5c-94af-ac6b1254adee", "ddcd4c39-e3d5-4192-abd5-db956cd977fe", "Member", "MEMBER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "68c285df-f634-460d-8c35-7ba76aa614e9", "758388cc-3969-4e47-9215-141e60c3a62f", "Member", "MEMBER" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "f1f02f09-db85-4252-8ad1-798f0e435bd2", "2e322114-33a9-4cbb-b301-5f07a7befb24", "Admin", "ADMIN" });
+                values: new object[] { "945068bb-d7dc-47fd-b6da-6ddb7be0f09c", "e3015118-3b4f-4584-bff6-67fb7aaa74df", "Admin", "ADMIN" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pokemon_TeamId",
-                table: "Pokemon",
-                column: "TeamId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PokemonIds_UserId",
-                table: "PokemonIds",
+                name: "IX_StarredPokemon_UserId",
+                table: "StarredPokemon",
                 column: "UserId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Pokemon_PokemonTeam_TeamId",
-                table: "Pokemon",
-                column: "TeamId",
-                principalTable: "PokemonTeam",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
     }
 }

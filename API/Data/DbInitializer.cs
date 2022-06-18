@@ -21,6 +21,7 @@ namespace API.Data
                     Email = "bob@test.com"
                 };
 
+
                 await userManager.CreateAsync(user, "Pa$$w0rd");
                 await userManager.AddToRoleAsync(user, "Member");
 
@@ -44,7 +45,7 @@ namespace API.Data
                     Name= "Fake Pokemon",
                     Url = "Fake URL",
                     ImageUrl = "Fake image URL",
-                    UserNum = 1,
+                    
 
                 },
                         new Pokemon
@@ -52,7 +53,7 @@ namespace API.Data
                     Name = "Pokemon 1",
                     Url = "Fake Url Again",
                     ImageUrl = "another one Fake Url",
-                    UserNum = 12,
+                    
                 }
             };
             //loops through our list of Product 

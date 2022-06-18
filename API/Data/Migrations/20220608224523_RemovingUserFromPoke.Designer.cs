@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(PokedexContext))]
-    partial class PokedexContextModelSnapshot : ModelSnapshot
+    [Migration("20220608224523_RemovingUserFromPoke")]
+    partial class RemovingUserFromPoke
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.5");
@@ -134,15 +136,15 @@ namespace API.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ec441a7f-3112-4c03-802b-5f22f8ac1e34",
-                            ConcurrencyStamp = "6088a67e-4e94-4745-8252-e65462e74365",
+                            Id = "f899a012-8f71-47e0-b130-044707453b21",
+                            ConcurrencyStamp = "5ef43dc4-1131-4504-865c-0dc8a6e4d6fb",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "28aa35ce-5620-44bb-81e2-3cd9db6fdd72",
-                            ConcurrencyStamp = "fcbfd31c-5013-47b2-b74f-533999b2f56d",
+                            Id = "26c546aa-a9c4-4aa3-b23d-6a53831b62d5",
+                            ConcurrencyStamp = "fa763ba4-cc61-4951-976c-ac4ee1a9c59d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -252,11 +254,9 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.Pokemon", b =>
                 {
-                    b.HasOne("API.Entities.User", "User")
-                        .WithMany()
+                    b.HasOne("API.Entities.User", null)
+                        .WithMany("StarredPokemonIds")
                         .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -308,6 +308,11 @@ namespace API.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("API.Entities.User", b =>
+                {
+                    b.Navigation("StarredPokemonIds");
                 });
 #pragma warning restore 612, 618
         }

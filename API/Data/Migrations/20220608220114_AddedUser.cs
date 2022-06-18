@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Data.Migrations
 {
-    public partial class IdentityAdded : Migration
+    public partial class AddedUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,6 +23,12 @@ namespace API.Data.Migrations
             migrationBuilder.DropColumn(
                 name: "PokemonTeamId",
                 table: "Pokemon");
+
+            migrationBuilder.AddColumn<string>(
+                name: "UserId",
+                table: "Pokemon",
+                type: "TEXT",
+                nullable: true);
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
@@ -172,12 +178,17 @@ namespace API.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "976049d9-defe-4537-bd23-59e473c6ec75", "2d5aecdf-6241-4ab2-adb0-6cb3c0511503", "Member", "MEMBER" });
+                values: new object[] { "84005817-32a6-496c-8cf1-a42733cc8117", "8d49d4ed-e09b-4215-8164-bf75930acf3b", "Member", "MEMBER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "a9dc0c83-9414-4491-b6c0-a5049d150b2a", "360dc779-0468-440c-9ad0-7c853275457c", "Admin", "ADMIN" });
+                values: new object[] { "c7edd606-73b5-4e1d-8f2f-679182e5d3cb", "06274745-2be9-4173-ab7d-b014513a058f", "Admin", "ADMIN" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pokemon_UserId",
+                table: "Pokemon",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -215,10 +226,21 @@ namespace API.Data.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Pokemon_AspNetUsers_UserId",
+                table: "Pokemon",
+                column: "UserId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Pokemon_AspNetUsers_UserId",
+                table: "Pokemon");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -239,6 +261,14 @@ namespace API.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Pokemon_UserId",
+                table: "Pokemon");
+
+            migrationBuilder.DropColumn(
+                name: "UserId",
+                table: "Pokemon");
 
             migrationBuilder.AddColumn<int>(
                 name: "PokemonTeamId",
