@@ -16,7 +16,7 @@ function Login(){
 
         try{
 
-            console.log(userFormData.username, userFormData.password)
+            
             let {data}= await axios.post('https://localhost:7208/api/Account/login',
             {
                 "username": userFormData.username,

@@ -81,15 +81,27 @@ namespace API.Controllers
             return StatusCode(201);
         }
         [Authorize]
-        [HttpPost("starredPokemon")]
-        public async Task<ActionResult<List<string>>>
-        StarPokemon(PokemonDTO newPoke)
+        [HttpPost("starUnstarPokemon")]
+        public async Task<ActionResult<User>>
+        StarUnstarPokemon(PokemonDTO newPoke)
         {
-            //find current user 
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             _context.Pokemon.Add(new Pokemon{Name = newPoke.Name, User = user});
             await _context.SaveChangesAsync();
+
+            return user;
+        }
+
+
+        [HttpPost("starredPokemon")]
+        public async Task<ActionResult<List<string>>>
+        GetStarredPokemon()
+        {
+            //find current user 
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            
 
             var list = new List<string>();
             foreach( var poke in _context.Pokemon)
