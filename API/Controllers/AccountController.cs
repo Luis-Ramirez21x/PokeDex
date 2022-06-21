@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
@@ -82,15 +84,28 @@ namespace API.Controllers
         }
         [Authorize]
         [HttpPost("starUnstarPokemon")]
-        public async Task<ActionResult<User>>
+        public async Task<ActionResult<Pokemon>>
         StarUnstarPokemon(PokemonDTO newPoke)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            _context.Pokemon.Add(new Pokemon{Name = newPoke.Name, User = user});
-            await _context.SaveChangesAsync();
+            var entity = await _context.Pokemon.FirstOrDefaultAsync(p => p.Name == newPoke.Name);
 
-            return user;
+            
+            if(entity != null)
+            {
+                _context.Pokemon.Remove(entity);
+                await _context.SaveChangesAsync();
+            }else
+            {
+                _context.Pokemon.Add(new Pokemon{Name = newPoke.Name, User = user});
+                await _context.SaveChangesAsync();
+            }
+
+
+
+
+            return entity;
         }
 
 

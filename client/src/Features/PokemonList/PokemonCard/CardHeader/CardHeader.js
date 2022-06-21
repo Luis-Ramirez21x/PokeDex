@@ -1,30 +1,70 @@
 import { Card, Col, Container, Row, Badge } from "react-bootstrap";
 import './CardHeader.css';
 import { FaStar } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import Auth from '../../../../App/Util/auth'
 
 
 
 function CardHeader({imgUrl, name, types, id}){
 
-    //star pokemon state 
+   
+    let [starredPokelist, setPokelist] = useState({});
+    const [loading, setLoading] = useState(true);
+     //star pokemon state 
     const [stared, starPokemon] = useState(false);
-    //const stars = Array(1).fill(0)
+    let token = Auth.getToken();
+    
+    useEffect( () => {
+        
+        axios.post("https://localhost:7208/api/Account/starredPokemon", {},{
+
+            headers: {
+              "Authorization": `Bearer ${token}`
+            }
+        })
+        .then( res => setPokelist(res.data))
+        .catch(error => console.log(error))
+        .finally(() => setLoading(false))
+    }, [])
+    
+    function isStarred(){
+        starredPokelist.map( key => {
+            if(key == name){
+                starPokemon(true);
+            } 
+        })
+    }
 
     function savePokemon(){
+        
+        //if pokemon is starred show star 
+        //else grey star
+ 
         starPokemon(!stared);
 
-        if(stared){
+        
         let newPokemon = { name : name, url : `/pokemon/${id}`, imageUrl : imgUrl}
-        axios.post(`https://localhost:7208/api/Pokemon`, newPokemon)
+        axios.post(`https://localhost:7208/api/Account/starUnstarPokemon`, newPokemon,{
+
+            headers: {
+              "Authorization": `Bearer ${token}`
+            }
+        })
             .then(res => console.log(res))
             .catch(error => console.log(error))
-        }   
+           
         
     }
     
+    if(loading){
+        return(<h2>Loading...</h2>)
+    }
 
+    
+    
+    isStarred();
     return(
         <Container>
             <Row>
