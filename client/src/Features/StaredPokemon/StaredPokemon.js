@@ -10,6 +10,7 @@ import BasicCard from '../PokemonList/BasicCard/BasicCard'
 function StaredPokemon() {
     let [starredPokelist, setPokelist] = useState({});
     const [loading, setLoading] = useState(true);
+    let token = Auth.getToken();
 
     useEffect( () => {
         let token = Auth.getToken();

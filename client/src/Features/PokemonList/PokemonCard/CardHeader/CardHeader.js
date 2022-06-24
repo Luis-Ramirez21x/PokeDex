@@ -7,36 +7,32 @@ import Auth from '../../../../App/Util/auth'
 
 
 
-function CardHeader({imgUrl, name, types, id}){
-
-   
-    let [starredPokelist, setPokelist] = useState({});
-    const [loading, setLoading] = useState(true);
-     //star pokemon state 
-    const [stared, starPokemon] = useState(false);
+function CardHeader({imgUrl, name, types, id, isStarred}){
+    const [loading, setLoading] = useState(false);
     let token = Auth.getToken();
+    let [stared, starPokemon] = useState( isStarred);
+   
+    console.log(isStarred);
+    //const [loading, setLoading] = useState(true);
+     //star pokemon state 
     
-    useEffect( () => {
+    
+    
+    
+        function isStared(){
+            //let bool = false;
+            console.log(starredPokelist.length)
+        for(let i=0; i<starredPokelist.length; i++){
+            
+            if(name == starredPokelist[i]){
+               starPokemon(true);
+               return;
+            }   
+        }
         
-        axios.post("https://localhost:7208/api/Account/starredPokemon", {},{
-
-            headers: {
-              "Authorization": `Bearer ${token}`
-            }
-        })
-        .then( res => setPokelist(res.data))
-        .catch(error => console.log(error))
-        .finally(() => setLoading(false))
-    }, [])
-    
-    function isStarred(){
-        starredPokelist.map( key => {
-            if(key == name){
-                starPokemon(true);
-            } 
-        })
     }
 
+   
     function savePokemon(){
         
         //if pokemon is starred show star 
@@ -64,7 +60,7 @@ function CardHeader({imgUrl, name, types, id}){
 
     
     
-    isStarred();
+    
     return(
         <Container>
             <Row>
