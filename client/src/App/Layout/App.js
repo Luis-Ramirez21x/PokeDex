@@ -22,8 +22,8 @@ function App() {
       <Header/>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage/>} />
-          <Route path='/login' element={<Login/>} />
+          <Route path="/Home" element={<HomePage/>} />
+          <Route path='/' element={<Login/>} />
           <Route path='/signUp' element={<SignUp/>} />
           <Route path="/test" element={<PokemonCard/>} />
           <Route path="/pokemonList" element={<PokemonList/>} />

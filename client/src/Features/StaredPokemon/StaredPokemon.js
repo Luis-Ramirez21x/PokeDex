@@ -13,7 +13,7 @@ function StaredPokemon() {
     let token = Auth.getToken();
 
     useEffect( () => {
-        let token = Auth.getToken();
+        
 
 
         axios.post("https://localhost:7208/api/Account/starredPokemon", {},{
@@ -34,14 +34,17 @@ function StaredPokemon() {
         )
     }
 
-    
+    starredPokelist.map((poke) =>{
+        console.log(poke);
+    })
+        
     return(
         <Container>
         <Row xs={2} md={2}>
            
             {starredPokelist.map((pokemon) =>{
                 return(
-                    <BasicCard key={pokemon.name} name={pokemon.name} url={`https://pokeapi.co/api/v2/pokemon/${pokemon}`} />
+                    <BasicCard key={pokemon} name={pokemon} url={`https://pokeapi.co/api/v2/pokemon/${pokemon}`} />
                 )
             })}
 

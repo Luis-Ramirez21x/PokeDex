@@ -9,19 +9,27 @@ import Auth from '../../../App/Util/auth'
 
 function PokemonCard (){
     const [pokemon, setPokemon] = useState();
+    const [color, setColor] = useState();
     const [loading, setLoading] = useState(true);
     let [starredPokelist, setPokelist] = useState({});
-    let token = Auth.getToken();
+    
     let {id} = useParams();
     //variable sent as props to tell wether pokemon is already stared
     let isStarred = false;
-
+    
     useEffect(() => {
       axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then( res => setPokemon(res.data))
       .catch(error => console.log(error))
       .finally(() => setLoading(false))
 
+      axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+        .then(res => setColor(res.data))
+        .catch(error => console.log(error));
+
+
+      if(Auth.loggedIn){
+      let token = Auth.getToken();
       axios.post("https://localhost:7208/api/Account/starredPokemon", {},{
 
         headers: {
@@ -30,7 +38,7 @@ function PokemonCard (){
     })
     .then( res => setPokelist(res.data))
     .catch(error => console.log(error))
-    
+  }
     }, [])
 
     function checkStarred(){
@@ -52,7 +60,7 @@ function PokemonCard (){
     }
     checkStarred();
    
-    
+    console.log(pokemon);
       return(
         <>
         {loading ? (<h2>loading...</h2>) : (

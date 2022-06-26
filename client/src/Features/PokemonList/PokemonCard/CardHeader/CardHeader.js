@@ -8,29 +8,17 @@ import Auth from '../../../../App/Util/auth'
 
 
 function CardHeader({imgUrl, name, types, id, isStarred}){
-    const [loading, setLoading] = useState(false);
+    
     let token = Auth.getToken();
     let [stared, starPokemon] = useState( isStarred);
    
-    console.log(isStarred);
-    //const [loading, setLoading] = useState(true);
-     //star pokemon state 
+    
+
     
     
     
     
-        function isStared(){
-            //let bool = false;
-            console.log(starredPokelist.length)
-        for(let i=0; i<starredPokelist.length; i++){
-            
-            if(name == starredPokelist[i]){
-               starPokemon(true);
-               return;
-            }   
-        }
-        
-    }
+ 
 
    
     function savePokemon(){
@@ -53,12 +41,7 @@ function CardHeader({imgUrl, name, types, id, isStarred}){
            
         
     }
-    
-    if(loading){
-        return(<h2>Loading...</h2>)
-    }
 
-    
     
     
     return(

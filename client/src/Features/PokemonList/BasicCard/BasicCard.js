@@ -5,12 +5,25 @@ import { useEffect, useState, Link } from "react";
 function BasicCard({name, url}){
     
     const [pokemon, setPokemon] = useState();
+    const [color, setColor] = useState();
     const [loading, setLoading] = useState(true);
+    
 
     useEffect(() => {
+
+
+
         axios.get(url)
         .then(res => setPokemon(res.data))
+        .then( 
+            axios.get(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
+                .then(res => setColor(res.data.color.name))
+                .catch(error => console.log(error))
+        )
+        .catch(error => console.log(error))
         .finally(() => setLoading(false))
+
+        
     }, [])
 
     
@@ -18,9 +31,14 @@ function BasicCard({name, url}){
     if(loading) {
         return(<h2>Loading..</h2>)
     }
-    
+   console.log(color);
     return(
-        <Card className='basicCard' as="a" href={`/pokemon/${pokemon.id}`} style={{ cursor: "pointer" }}>
+        <Card 
+        className={`basicCard ${color}`}
+        as="a" 
+        href={`/pokemon/${pokemon.id}`} 
+        style={{ cursor: "pointer"}} 
+        >
    
             <Card.Img variant="top" src={pokemon.sprites.other.dream_world.front_default} />
             <Card.Body>

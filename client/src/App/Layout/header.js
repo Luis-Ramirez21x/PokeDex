@@ -18,7 +18,7 @@ function Header (){
             {token? (
                 <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
           ) : (
-            <Nav.Link href="/login">Login/Signup</Nav.Link>
+            <Nav.Link href="/">Login/Signup</Nav.Link>
           )}
             
           </Nav.Item>
