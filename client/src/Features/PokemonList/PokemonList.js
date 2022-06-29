@@ -26,6 +26,7 @@ function PokemonList(){
     
     return(
         <Container>
+            <h1>Pokedex</h1>
             <Row xs={2} md={2}>
                
                 {pokelist.map((pokemon) =>{

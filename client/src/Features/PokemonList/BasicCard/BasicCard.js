@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Card, Badge } from "react-bootstrap";
 import { useEffect, useState, Link } from "react";
+import pokeball from '../../../Images/pokeball.png'
 
 function BasicCard({name, url}){
     
@@ -39,10 +40,13 @@ function BasicCard({name, url}){
         href={`/pokemon/${pokemon.id}`} 
         style={{ cursor: "pointer"}} 
         >
-   
+            <img className="pokeball" src={pokeball} alt=""></img>
+            <h6 className='pokeName'>{name.charAt(0).toUpperCase(0) + name.slice(1)}</h6>
+            
+            <div className='basicCardDetails'>
             <Card.Img variant="top" src={pokemon.sprites.other.dream_world.front_default} />
             <Card.Body>
-            <Card.Title className='pokeName'>{name.charAt(0).toUpperCase(0) + name.slice(1)}</Card.Title>
+            
             <Card.Text>
 
                 {pokemon.types.map((type) => {
@@ -56,7 +60,7 @@ function BasicCard({name, url}){
                 
             </Card.Text>
             </Card.Body>
-            
+            </div>
         </Card>
     )
 }

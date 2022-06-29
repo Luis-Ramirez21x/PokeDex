@@ -7,7 +7,7 @@ import Auth from '../../../../App/Util/auth'
 
 
 
-function CardHeader({imgUrl, name, types, id, isStarred}){
+function CardHeader({imgUrl, name, types, id, isStarred, color}){
     
     let token = Auth.getToken();
     let [stared, starPokemon] = useState( isStarred);
@@ -48,7 +48,7 @@ function CardHeader({imgUrl, name, types, id, isStarred}){
         <Container>
             <Row>
                 <Col>
-                    <Card className="header">
+                    <Card className={`header ${color}`}>
                         <Card.Body>
                         <Card.Title>{name}</Card.Title>
                         <FaStar key={'star'} 
