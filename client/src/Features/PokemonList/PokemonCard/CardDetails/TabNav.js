@@ -1,4 +1,6 @@
 import { Nav } from "react-bootstrap";
+import './TabNav.css';
+
 
 
 
@@ -17,7 +19,7 @@ function TabNav({currentTab, setCurrentTab}){
             </Nav.Item>
             <Nav.Item>
             <Nav.Link className={currentTab === 'Evolution' ? 'nav-link active' : 'nav-link'}
-            onClick={() => setCurrentTab('Evolution')}>Evolution</Nav.Link>
+            onClick={() => setCurrentTab('Evolution')}>Evo.</Nav.Link>
             </Nav.Item>
             <Nav.Item>
             <Nav.Link className={currentTab === 'Abilities' ? 'nav-link active' : 'nav-link'}

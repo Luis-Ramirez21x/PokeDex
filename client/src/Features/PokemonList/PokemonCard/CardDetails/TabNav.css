@@ -1,0 +1,10 @@
+.nav-link{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    color: #999999 !important;
+}
+
+.nav-link.active{
+    color: #242424 !important;
+    
+}

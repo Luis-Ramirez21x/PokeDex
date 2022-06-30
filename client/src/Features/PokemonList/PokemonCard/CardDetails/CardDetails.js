@@ -5,11 +5,12 @@ import About from './Stats/About';
 import BaseStats from './Stats/BaseStats';
 import Evolution from './Stats/Evolution/Evolution';
 import Abilities from './Stats/Abilities';
+import './CardDetails.css'
 
 
 function CardDetails({pokemon}){
 
-    const [currentTab, setCurrentTab] = useState('BaseStats');
+    const [currentTab, setCurrentTab] = useState('About');
 
     const renderTab = () => {
         if (currentTab === 'About') {

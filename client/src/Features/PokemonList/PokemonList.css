@@ -13,7 +13,7 @@
 }
 .card-body{
     margin:auto;
-    padding:0% !important;
+    padding:0% ;
 }
 
 .pokeball{
@@ -33,7 +33,8 @@
 }
 
 .card-img-top{
-    width:100px !important;
+    
+    width:100px;
     height: 100px;
 }
 

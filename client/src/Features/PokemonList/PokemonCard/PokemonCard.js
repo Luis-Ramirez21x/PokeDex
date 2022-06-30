@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import CardHeader from './CardHeader/CardHeader'
 import CardDetails from './CardDetails/CardDetails'
 import Auth from '../../../App/Util/auth'
+import './PokemonCard.css'
 
 function PokemonCard (){
     const [pokemon, setPokemon] = useState();
