@@ -1,7 +1,15 @@
 .table{
     font-family: 'Open Sans', sans-serif;
     font-size:18px;
-    color: #c7c7c5;
+    
+}
+
+
+.td-header{
+    font-size:18px;
+    font-style: italic;
+    font-weight: bold;
+    color: #999999;
 }
 
 .about-table{
@@ -29,7 +37,10 @@
 
 .about-stats div div div{
     font-size:18px;
-    color: #c7c7c5;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    color: #999999;
+    font-weight: bold;
     
 }
 
@@ -45,7 +56,7 @@
     height: 100px;
 }
 
-.card-body{
+.card-body-about{
     display: flex;
     flex-direction: column;
 }

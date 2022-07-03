@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Table, Card } from "react-bootstrap";
+import {capitalize,capitalizeWDash} from '../../../../../App/Util/util'
 
 
 function About({pokemon, speciesUrl}){
@@ -30,13 +31,13 @@ function About({pokemon, speciesUrl}){
         
         <Card>
             
-            <Card.Body>
+            <Card.Body className="card-body-about">
                 <Card.Title>Species</Card.Title>
                 <Card.Text>{speciesData.genera[7].genus}</Card.Text>        
             </Card.Body>
         </Card>
         <Card>
-            <Card.Body>
+            <Card.Body className="card-body-about">
                 <Card.Title>Weight</Card.Title>
                 <Card.Text>{pokemon.weight}</Card.Text>
             </Card.Body>
@@ -44,13 +45,13 @@ function About({pokemon, speciesUrl}){
         
        
         <Card>
-            <Card.Body>
+            <Card.Body className="card-body-about">
                 <Card.Title>Habitat</Card.Title>
-                <Card.Text>{speciesData.habitat.name}</Card.Text>
+                <Card.Text>{capitalize(speciesData.habitat.name)}</Card.Text>
             </Card.Body>
         </Card>
         <Card>
-            <Card.Body>
+            <Card.Body className="card-body-about">
                 <Card.Title>Height</Card.Title>
                 <Card.Text>{pokemon.height}</Card.Text>
             </Card.Body>
@@ -61,21 +62,21 @@ function About({pokemon, speciesUrl}){
  
         <div className="about-table">
         <h3>Breeding</h3>
-        <Table>
+        <Table borderless={true}>
             <tbody>
                 <tr>
-                    <td>Hatch Counter</td>
+                    <td className="td-header">Hatch Counter</td>
                     <td>{speciesData.hatch_counter + ' (x250 steps)'}</td>
                 </tr>
                 <tr>
-                    <td>Egg Groups</td>
+                    <td className="td-header">Egg Groups</td>
                     <td>{(speciesData.egg_groups).map((egg_group) =>{
-                        return egg_group.name + " ";
+                        return capitalize(egg_group.name) + " ";
                     })}</td>
                 </tr>
                 <tr>
-                    <td>Growth Rate</td>
-                    <td>{speciesData.growth_rate.name}</td>
+                    <td className="td-header">Growth Rate</td>
+                    <td>{capitalize(capitalizeWDash(speciesData.growth_rate.name))}</td>
                 </tr>
             </tbody>
         </Table>
