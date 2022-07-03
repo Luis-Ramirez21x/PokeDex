@@ -13,6 +13,9 @@
     border-radius: 15px 15px 0px 0px !important;
 }
 .card-body{
+
+}
+.header-container{
     width: 100%;
     padding-left: 2% !important;
     padding-right: 2%;
@@ -24,9 +27,15 @@
 
 .card-title{
     font-family: 'Paytone One', sans-serif;
+    
+    
+}
+
+.card-name{
     color:white;
     font-size: 40px !important;
 }
+
 .id-number{
     font-family: 'Open Sans', sans-serif;
     color:white;

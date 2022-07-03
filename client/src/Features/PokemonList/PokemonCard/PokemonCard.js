@@ -64,7 +64,7 @@ function PokemonCard (){
     }
     checkStarred();
    
-    
+    console.log(pokemon);
       return(
         <>
         {loading ? (<h2>loading...</h2>) : (

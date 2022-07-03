@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Card } from "react-bootstrap";
 
 
 function About({pokemon, speciesUrl}){
@@ -26,27 +26,40 @@ function About({pokemon, speciesUrl}){
     return (
 
         <>
-        <Table>
-            <tbody>
-                <tr>
-                    <td>Species</td>
-                    <td>{speciesData.genera[7].genus}</td>
-                </tr>
-                <tr>
-                    <td>Habitat</td>
-                    <td>{speciesData.habitat.name}</td>
-                </tr>
-                <tr>
-                    <td>Height:</td>
-                    <td>{pokemon.height}</td>
-                </tr>
-                <tr>
-                    <td>Weigth:</td>
-                    <td>{pokemon.weight}</td>
-                </tr>
+        <div className="about-stats">
+        
+        <Card>
+            
+            <Card.Body>
+                <Card.Title>Species</Card.Title>
+                <Card.Text>{speciesData.genera[7].genus}</Card.Text>        
+            </Card.Body>
+        </Card>
+        <Card>
+            <Card.Body>
+                <Card.Title>Weight</Card.Title>
+                <Card.Text>{pokemon.weight}</Card.Text>
+            </Card.Body>
+        </Card>
+        
+       
+        <Card>
+            <Card.Body>
+                <Card.Title>Habitat</Card.Title>
+                <Card.Text>{speciesData.habitat.name}</Card.Text>
+            </Card.Body>
+        </Card>
+        <Card>
+            <Card.Body>
+                <Card.Title>Height</Card.Title>
+                <Card.Text>{pokemon.height}</Card.Text>
+            </Card.Body>
+        </Card>
+       
+
+        </div>
  
-            </tbody>
-        </Table>
+        <div className="about-table">
         <h3>Breeding</h3>
         <Table>
             <tbody>
@@ -66,6 +79,7 @@ function About({pokemon, speciesUrl}){
                 </tr>
             </tbody>
         </Table>
+        </div>
         
         </>
     )

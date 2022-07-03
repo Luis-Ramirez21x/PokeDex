@@ -1,0 +1,51 @@
+.table{
+    font-family: 'Open Sans', sans-serif;
+    font-size:18px;
+    color: #c7c7c5;
+}
+
+.about-table{
+    margin: 4%;
+}
+
+.about-table h3{
+    font-family:'Open Sans', sans-serif;
+}
+
+
+.about-stats{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    border: 1px solid grey;
+    margin: 4%;
+    border-radius: 10px;
+    box-shadow: 10x 10px 10px 10px grey;
+    box-shadow: -5px 8px 8px darkgrey;
+    justify-content: space-around;
+}
+
+
+
+.about-stats div div div{
+    font-size:18px;
+    color: #c7c7c5;
+    
+}
+
+.about-stats div div p{
+    color:black;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    justify-content: space-between;
+}
+.about-stats div{
+    border: 0px;
+    width: 160px;
+    height: 100px;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+}
