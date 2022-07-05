@@ -1,0 +1,17 @@
+.evo-img{
+    height:150px;
+    width:150px;
+    margin-bottom: 2%;
+}
+
+.evochain-title{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin:5px
+}
+
+.evo-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

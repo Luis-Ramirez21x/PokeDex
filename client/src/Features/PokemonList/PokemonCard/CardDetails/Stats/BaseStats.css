@@ -1,0 +1,86 @@
+/* Classes for stat bar background color*/
+.greenbar div div{
+    background-color: #08D9A2 !important;
+}
+
+.redbar div div{
+    background-color: #ED5A5A!important;
+}
+
+.bluebar div div{
+    background-color: #5CADED !important;
+}
+
+.yellowbar div div{
+    background-color: #F7D314 !important;
+}
+
+.blackbar div div{
+    background-color: black !important;
+}
+
+.brownbar div div{
+    background-color: #914E30 !important;
+}
+
+.purplebar div div{
+    background-color: #D291BC !important;
+}
+
+.graybar div div{
+    background-color: gray !important;
+}
+
+.whitebar div div{
+    background-color: white !important;
+}
+
+.pinkbar div div{
+    background-color: pink !important;
+}
+
+/*stat name gradient coloring*/
+greenGradient{
+    
+    background: linear-gradient(
+            to right, #91dbc8, #08D9A2
+            );
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+}
+
+.redbarGradient{
+    background-color: #ED5A5A!important;
+}
+
+.bluebarGradient{
+    background-color: #5CADED !important;
+}
+
+.yellowbarGradient{
+    background-color: #F7D314 !important;
+}
+
+.blackbarGradient{
+    background-color: black !important;
+}
+
+.brownbarGradient{
+    background-color: #914E30 !important;
+}
+
+.purplebarGradient{
+    background-color: #D291BC !important;
+}
+
+.graybarGradient{
+    background-color: gray !important;
+}
+
+.whitebarGradient{
+    background-color: white !important;
+}
+
+.pinkbarGradient{
+    background-color: pink !important;
+}

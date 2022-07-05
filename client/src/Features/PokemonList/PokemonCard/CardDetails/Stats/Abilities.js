@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import './Abilities.css'
+import {capitalize} from '../../../../../App/Util/util'
 
 
 function Abilities({abilities}){
@@ -43,20 +45,20 @@ function Abilities({abilities}){
 
     return (
     <>
-    <Table>
-        <tbody>
+
         {abilityData.map((ability) => {
 
             return(
-                <tr key={ability.data.name}>
-                    <td>{ability.data.name}</td>
-                    <td>{ability.data.effect_entries[1].effect}</td>
-                </tr>
+                <div className="abl-card">
+                <h5>{capitalize(ability.data.name)}</h5>
+                <p>{ability.data.effect_entries[1].effect}</p>
+
+                </div>
+
             )
 
         })}
-        </tbody>
-    </Table>
+
     </>
     )
 }

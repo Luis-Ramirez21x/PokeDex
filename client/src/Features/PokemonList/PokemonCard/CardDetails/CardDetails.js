@@ -8,7 +8,7 @@ import Abilities from './Stats/Abilities';
 import './CardDetails.css'
 
 
-function CardDetails({pokemon}){
+function CardDetails({pokemon, color}){
 
     const [currentTab, setCurrentTab] = useState('About');
 
@@ -17,7 +17,7 @@ function CardDetails({pokemon}){
           return <About pokemon={pokemon}  speciesUrl={pokemon.species.url}/>;
         }
         if (currentTab === 'Base Stats') {
-          return <BaseStats stats={pokemon.stats}/>;
+          return <BaseStats stats={pokemon.stats} color={color}/>;
         }
         if (currentTab === 'Evolution') {
           return <Evolution speciesUrl={pokemon.species.url}/>;

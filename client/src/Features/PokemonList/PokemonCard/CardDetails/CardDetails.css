@@ -60,3 +60,27 @@
     display: flex;
     flex-direction: column;
 }
+
+/*  stats  */
+
+.stat-name{
+    width:25%;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    color: #999999;
+    font-weight: bold;
+    
+}
+
+.stat-number{
+    width:10%;
+}
+
+.stat-bar{
+    width:55%;
+}
+
+.table-div{
+    padding:2%;
+}

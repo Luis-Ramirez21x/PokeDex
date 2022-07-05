@@ -76,7 +76,7 @@ function PokemonCard (){
             isStarred = {isStarred}
             color={color}
             />
-            <CardDetails pokemon={pokemon} />
+            <CardDetails pokemon={pokemon} color={color}/>
             </>
         )}
         </>

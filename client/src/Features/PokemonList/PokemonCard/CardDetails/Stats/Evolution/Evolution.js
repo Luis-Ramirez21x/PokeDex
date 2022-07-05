@@ -35,7 +35,7 @@ function Evolution({speciesUrl}){
     return (
         <>
         
-            <h2>Evolution Chain</h2>
+            <h2 className='evochain-title'>Evolution Chain</h2>
             <EvoChain evoChain={evolutionChain.data.chain}/>
             
         </>

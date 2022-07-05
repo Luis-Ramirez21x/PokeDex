@@ -1,0 +1,9 @@
+
+.abl-card{
+    padding:2%;
+    border: 1px solid grey;
+    margin: 4%;
+    border-radius: 10px;
+    box-shadow: -5px 8px 8px darkgrey;
+    font-family: 'Open Sans', sans-serif;
+}

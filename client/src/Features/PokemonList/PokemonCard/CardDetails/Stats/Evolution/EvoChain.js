@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
-
+import {capitalize} from '../../../../../../App/Util/util'
+import './EvoChain.css'
 
 function EvoChain({evoChain}) {
     const [loading, setLoading] = useState(true);
@@ -66,28 +67,29 @@ function EvoChain({evoChain}) {
     }
 
     
-
+console.log(evoChain);
     return(
         <>
-            <Card>
+        <div className="evo-container">
+            <Card className="evo-img">
                 <Card.Img variant="top" src={imageUrl1} />
                 <Card.Body>
-                <Card.Title>{evo1}</Card.Title>
+                <Card.Title>{capitalize(evo1)}</Card.Title>
                 </Card.Body>
             </Card>
-            <Card>
+            <Card className="evo-img">
                 <Card.Img variant="top" src={imageUrl2} />
                 <Card.Body>
-                <Card.Title>{evo2}</Card.Title>
+                <Card.Title>{capitalize(evo2)}</Card.Title>
                 </Card.Body>
             </Card>
-            <Card>
+            <Card className="evo-img">
                 <Card.Img variant="top" src={imageUrl3} />
                 <Card.Body>
-                <Card.Title>{evo3}</Card.Title>
+                <Card.Title>{capitalize(evo3)}</Card.Title>
                 </Card.Body>
             </Card>
-        
+            </div>
         </>
     )
 }
