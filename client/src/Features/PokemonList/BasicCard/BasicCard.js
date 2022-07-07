@@ -32,7 +32,7 @@ function BasicCard({name, url}){
     if(loading) {
         return(<h2>Loading..</h2>)
     }
-   console.log(color);
+   
     return(
         <Card 
         className={`basicCard ${color}`}
