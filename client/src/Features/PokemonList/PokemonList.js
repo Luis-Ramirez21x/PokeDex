@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState, useRef, useCallback } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, InputGroup, Form, Button} from "react-bootstrap";
 import BasicCard from "./BasicCard/BasicCard";
 import './PokemonList.css'
 
@@ -17,9 +17,9 @@ const [error, setError] = useState(false);
 let [nextUrl, setNextUrl] = useState('https://pokeapi.co/api/v2/pokemon');
 let [query, setQuery]= useState('');
 
-useEffect(() => {
-    setPokelist([]);
-  }, [query])
+
+
+
 
 useEffect(() => {
     setLoading(true)
@@ -31,8 +31,14 @@ useEffect(() => {
         cancelToken: new axios.CancelToken(c => cancel = c)
       })
     .then(res =>{
-        url = res.data.next
+        if(query){
+            url=null;
+            setPokelist([{name:query, url:`https://pokeapi.co/api/v2/pokemon/${query}`}])
+        }else{
+            url = res.data.next
         setPokelist([...pokelist, ...res.data.results]);
+        }
+        
         
     })
     .catch(e => {
@@ -40,7 +46,7 @@ useEffect(() => {
         setError(true)
       })
     .finally(setLoading(false))
-    }, [nextUrl, query])
+    }, [nextUrl])
 
     const observer = useRef()
     const lastPokemonRef = useCallback(node => {
@@ -54,10 +60,19 @@ useEffect(() => {
     if (node) observer.current.observe(node)
     }, [loading])
 
-    function handleSearch(e) {
-        setQuery(e.target.value);
-        setPageNumber(1);
+    function handleChange(e){
+        setQuery(e.target.value)
     }
+
+    function handleSearch() {
+        setLoading(true);
+        setNextUrl(`https://pokeapi.co/api/v2/pokemon/${query}`);
+
+      
+    }
+
+
+    
 
 
 
@@ -68,11 +83,24 @@ useEffect(() => {
     return(
         <Container>
             <h1>Pokedex</h1>
-            <input type="text" onChange={handleSearch}></input>
+            
+            
+        <InputGroup className="mb-3">
+            <Form.Control
+            placeholder="Recipient's username"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+            value={query}
+            onChange={handleChange}
+            />
+            <Button variant="outline-secondary" id="button-addon2" onClick={handleSearch}>
+            Button
+            </Button>
+        </InputGroup>
             <Row xs={2} md={2}>
                
                 {pokelist.map((pokemon, index) =>{
-                    if(pokelist.length === index+1){
+                    if(pokelist.length === index+1 && nextUrl){
                         return (
                         <div ref={lastPokemonRef} key={pokemon.name} name={pokemon.name} url={pokemon.url}>test</div>
                         )
@@ -82,8 +110,7 @@ useEffect(() => {
                     )
                 })}
 
-                <div>Loading...</div>
-                <div>Error</div>
+                
                 
             </Row>
         </Container>
