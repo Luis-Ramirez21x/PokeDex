@@ -45,6 +45,7 @@
 .back-arrow{
     height:45px;
     width:50px;
+    color: #2a2b2b !important;
 }
 
 .star{
@@ -83,4 +84,5 @@
     z-index: -1;
     opacity: 0.8;
 }
+
 

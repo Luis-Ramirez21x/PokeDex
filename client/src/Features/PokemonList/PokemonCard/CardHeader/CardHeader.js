@@ -1,7 +1,8 @@
 import { Card, Col, Container, Row, Badge } from "react-bootstrap";
 import './CardHeader.css';
 import { FaStar } from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { useState} from "react";
+import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import Auth from '../../../../App/Util/auth'
 import pokeball from '../../../../Images/pokeball.png'
@@ -10,10 +11,10 @@ import {capitalize} from '../../../../App/Util/util'
 
 
 function CardHeader({imgUrl, name, types, id, isStarred, color}){
-    
+    let loggedIn = Auth.loggedIn();
     let token = Auth.getToken();
     let [stared, starPokemon] = useState( isStarred);
-   
+    const navigate = useNavigate();
     
 
     
@@ -25,21 +26,24 @@ function CardHeader({imgUrl, name, types, id, isStarred, color}){
    
     function savePokemon(){
         
-        //if pokemon is starred show star 
-        //else grey star
- 
-        starPokemon(!stared);
+        if(loggedIn){
+            starPokemon(!stared);
 
         
-        let newPokemon = { name : name, url : `/pokemon/${id}`, imageUrl : imgUrl}
-        axios.post(`https://localhost:7208/api/Account/starUnstarPokemon`, newPokemon,{
+            let newPokemon = { name : name, url : `/pokemon/${id}`, imageUrl : imgUrl}
+            axios.post(`https://localhost:7208/api/Account/starUnstarPokemon`, newPokemon,{
+    
+                headers: {
+                  "Authorization": `Bearer ${token}`
+                }
+            })
+                .then(res => console.log(res))
+                .catch(error => console.log(error))
+        }else{
+            navigate("/redirect")
+        }
+ 
 
-            headers: {
-              "Authorization": `Bearer ${token}`
-            }
-        })
-            .then(res => console.log(res))
-            .catch(error => console.log(error))
            
         
     }
@@ -53,7 +57,7 @@ function CardHeader({imgUrl, name, types, id, isStarred, color}){
                     <Card className={`header ${color}`}>
                         <Card.Body className="header-container">
                         <div className="arrow-name-badge">
-                            <a href="/pokemonList">
+                            <a href="/pokemonList" className="back-arrow">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-left-circle back-arrow" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
                             </svg>

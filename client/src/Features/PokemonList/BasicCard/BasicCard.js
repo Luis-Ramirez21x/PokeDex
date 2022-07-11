@@ -32,7 +32,7 @@ function BasicCard({name, url}){
     if(loading) {
         return(<h2>Loading..</h2>)
     }
-   
+   console.log(pokemon);
     return(
         <Card 
         className={`basicCard ${color}`}
@@ -44,8 +44,8 @@ function BasicCard({name, url}){
             <h6 className='pokeName'>{name.charAt(0).toUpperCase(0) + name.slice(1)}</h6>
             
             <div className='basicCardDetails'>
-            <Card.Img variant="top" src={pokemon.sprites.other.dream_world.front_default} />
-            <Card.Body>
+            <Card.Img className ="card-img-top-basic" variant="top" src={pokemon.sprites.other.dream_world.front_default} />
+            <Card.Body className="card-body-basic">
             
             <Card.Text>
 

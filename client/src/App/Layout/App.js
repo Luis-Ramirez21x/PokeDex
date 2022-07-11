@@ -14,6 +14,7 @@ import Header from './header'
 import HomePage from '../../Features/Home/Home';
 import PokemonList from '../../Features/PokemonList/PokemonList';
 import StaredPokemon from '../../Features/StaredPokemon/StaredPokemon';
+import LoginRedirect from '../../Errors/LoginRedirect';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/Home" element={<HomePage/>} />
+          <Route path='redirect' element={<LoginRedirect/>}/>
           <Route path='/' element={<Login/>} />
           <Route path='/signUp' element={<SignUp/>} />
           <Route path="/test" element={<PokemonCard/>} />

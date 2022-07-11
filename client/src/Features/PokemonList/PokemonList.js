@@ -82,19 +82,19 @@ useEffect(() => {
     
     return(
         <Container>
-            <h1>Pokedex</h1>
+            <h1 style={{"text-align":"center"}}>Pokedex</h1>
             
             
-        <InputGroup className="mb-3">
+        <InputGroup className="mb-3 search-box">
             <Form.Control
-            placeholder="Recipient's username"
-            aria-label="Recipient's username"
+            placeholder="Search Pokemon..."
+            aria-label="Pokemon"
             aria-describedby="basic-addon2"
             value={query}
             onChange={handleChange}
             />
             <Button variant="outline-secondary" id="button-addon2" onClick={handleSearch}>
-            Button
+            Find
             </Button>
         </InputGroup>
             <Row xs={2} md={2}>

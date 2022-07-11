@@ -1,0 +1,13 @@
+.please-log-in{
+    border:1px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 95% !important;
+    height: fit-content;
+}
+
+.please-log-in img{
+    height:186px;
+    width:350px;
+}
