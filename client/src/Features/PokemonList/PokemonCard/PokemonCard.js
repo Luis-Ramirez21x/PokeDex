@@ -34,7 +34,7 @@ function PokemonCard (){
 
       if(Auth.loggedIn() != false){
       let token = Auth.getToken();
-      axios.post("https://localhost:7208/api/Account/starredPokemon", {},{
+      axios.post(process.env.REACT_APP_API_URL + "Account/starredPokemon", {},{
 
         headers: {
           "Authorization": `Bearer ${token}`

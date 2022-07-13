@@ -20,7 +20,7 @@ function SignUp() {
         event.preventDefault();
 
         try{
-            let signUp = await axios.post('https://localhost:7208/api/Account/register',
+            let signUp = await axios.post(process.env.REACT_APP_API_URL + 'Account/register',
             {
                 
                 "email": userFormData.email,

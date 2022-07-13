@@ -31,7 +31,7 @@ function CardHeader({imgUrl, name, types, id, isStarred, color}){
 
         
             let newPokemon = { name : name, url : `/pokemon/${id}`, imageUrl : imgUrl}
-            axios.post(`https://localhost:7208/api/Account/starUnstarPokemon`, newPokemon,{
+            axios.post(process.env.REACT_APP_API_URL + `Account/starUnstarPokemon`, newPokemon,{
     
                 headers: {
                   "Authorization": `Bearer ${token}`
