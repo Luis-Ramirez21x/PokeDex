@@ -1,6 +1,6 @@
 # PokeDex
 
-https://github.com/Luis-Ramirez21x/PokeDex
+https://pokdex-test.herokuapp.com/pokemonList
 
 # Business Connect
 
